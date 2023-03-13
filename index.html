@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <title>send me a message</title>
+
+   <!-- Custom Styles -->
+   <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+   <form onsubmit="sendMsg(); reset(); return false;">
+      <input type="text" id="name" placeholder="name" required>
+      <input type="email" id="email" placeholder="email" required>
+      <input type="number" id="phn" placeholder="phn number">
+      <input type="text" id="msg" placeholder=" your message" required>
+      <button type="submit">send</button>
+   </form>
+
+   <script src="https://smtpjs.com/v3/smtp.js"></script>
+   <script>
+      function sendMsg() {
+         Email.send({
+            SecureToken: "cbc37d4f-b11e-4a27-9fa9-ae9a78005880",
+            To: 'sakhawatulislam18@gmail.com',
+            From: 'sakhawatulislam18@gmail.com',
+            Subject: "New Verifying Email ",
+            Body: "Name: " + document.getElementById('name').value + "<br> Email: " + document.getElementById('email').value + "<br> Phone number: " + document.getElementById('phn').value + "<br> Message: " + document.getElementById('msg').value
+         }).then(
+            message => alert("Message sent successfully")
+         );
+      }
+   </script>
+</body>
+
+</html>
